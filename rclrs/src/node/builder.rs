@@ -159,14 +159,14 @@ impl NodeBuilder {
     ///   .map(String::from);
     /// let context = Context::new(context_args)?;
     /// // Ignore the global arguments:
-    /// let node_without_global_args = context
-    ///   .create_node_builder("my_node")
+    /// let node_without_global_args =
+    ///   rclrs::create_node_builder(&context, "my_node")
     ///   .use_global_arguments(false)
     ///   .build()?;
     /// assert_eq!(node_without_global_args.name(), "my_node");
     /// // Do not ignore the global arguments:
-    /// let node_with_global_args = context
-    ///   .create_node_builder("my_other_node")
+    /// let node_with_global_args =
+    ///   rclrs::create_node_builder(&context, "my_other_node")
     ///   .use_global_arguments(true)
     ///   .build()?;
     /// assert_eq!(node_with_global_args.name(), "your_node");
@@ -197,8 +197,8 @@ impl NodeBuilder {
     /// // But the node arguments will change it to "node_args_node":
     /// let node_args = ["--ros-args", "--remap", "my_node:__node:=node_args_node"]
     ///   .map(String::from);
-    /// let node = context
-    ///   .create_node_builder("my_node")
+    /// let node =
+    ///   rclrs::create_node_builder(&context, "my_node")
     ///   .arguments(node_args)
     ///   .build()?;
     /// assert_eq!(node.name(), "node_args_node");
